@@ -1,5 +1,6 @@
 var filesToCache = [
-	'index.html'
+	'index.html',
+	'jquery.js'
 	//'/offline/',
 	//'/style.css',
 	//'/logo.png'
