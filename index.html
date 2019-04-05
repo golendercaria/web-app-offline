@@ -7,9 +7,53 @@
 <body>
 	
 	<h1>Apps Offline</h1>
+	<form action="">
+	    <fieldset>
+	        <legend>Formulaire de contact</legend>
+	        <div>
+	            <label for="email">Votre adresse email</label>
+	            <input type="email" name="email" id="email_input" required placeholder="toto@gmail.com">
+	        </div>
+	        <div>
+	            <label for="firstname">Votre prénom</label>
+	            <input type="text" name="firstname" required placeholder="Prénom">
+	        </div>
+	        <div>
+	            <label for="lastname">Votre nom de famille</label>    
+	            <input type="text" name="lastname" required placeholder="Nom">
+	        </div>
+	        <input type="submit">Envoyer le formulaire</button>
+	    </fieldset>
+	</form>
 	
+	
+	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript">
-		console.log("hellow");
+		
+		jQuery(function($){
+			$("form").submit(function(){
+				var data = $(this).serialize();
+				console.log(data);
+				
+				$.ajax({
+					async: true,
+					url: "post.php",
+					method: "POST",
+					data: { data : data },
+					complete: function(e){
+						if(e.responseText == 1){
+							console.clear();
+						}
+					}
+				});
+ 
+				
+				return false;
+			});
+		});
+		
+		
+		
 		if ('serviceWorker' in navigator) {
 			window.addEventListener('load', function() {
 				navigator.serviceWorker.register('offline.js').then(function(registration) {
@@ -17,7 +61,7 @@
 					console.log('ServiceWorker registration successful with scope: ', registration.scope);
 				}, function(err) {
 					// registration failed :(
-					console.log('ServiceWorker registration failed: ', err);
+					//console.log('ServiceWorker registration failed: ', err);
 				});
 			});
 		}else{

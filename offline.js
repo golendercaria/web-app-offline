@@ -1,8 +1,9 @@
 var filesToCache = [
 	'/',
-	'/offline/',
-	'/style.css',
-	'/logo.png'
+	'/index.html'
+	//'/offline/',
+	//'/style.css',
+	//'/logo.png'
 ];
 
 self.addEventListener('install', function(event) {
@@ -40,7 +41,7 @@ self.addEventListener('fetch', function(event) {
         })
         return response || fetchPromise;
       }).catch(function(){
-	      return caches.match('/offline/')
+	      return caches.match('/index.js')
       })
     })
   );
