@@ -41,7 +41,7 @@ self.addEventListener('fetch', function(event) {
         })
         return response || fetchPromise;
       }).catch(function(){
-	      return caches.match('/index.js')
+	      return caches.match('/index.html')
       })
     })
   );
