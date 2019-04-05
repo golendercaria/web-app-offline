@@ -1,6 +1,5 @@
 var filesToCache = [
-	'/',
-	'/index.html'
+	'index.html'
 	//'/offline/',
 	//'/style.css',
 	//'/logo.png'
@@ -14,7 +13,7 @@ self.addEventListener('install', function(event) {
 	);
 });
 
-var bad_url = ["/wp-admin/","/recaptcha/"];
+var bad_url = ["wp-admin/","recaptcha/"];
 
 self.addEventListener('fetch', function(event) {
 
@@ -41,7 +40,7 @@ self.addEventListener('fetch', function(event) {
         })
         return response || fetchPromise;
       }).catch(function(){
-	      return caches.match('/index.html')
+	      return caches.match('index.html')
       })
     })
   );
